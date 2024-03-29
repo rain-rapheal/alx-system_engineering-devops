@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Name of the private key
+PRIVATE_KEY_NAME="school"
+
+# Number of bits in the key
+BITS=4096
+
+# Passphrase to protect the key
+PASSPHRASE="betty"
+
+# Generate the RSA key pair
+ssh-keygen -t rsa -b $BITS -C "Generated Key" -N "$PASSPHRASE" -f $PRIVATE_KEY_NAME
+
+# Display information about the generated key
+echo "Your identification has been saved in $PRIVATE_KEY_NAME."
+echo "Your public key has been saved in $PRIVATE_KEY_NAME.pub."
+echo "The key fingerprint is:"
+ssh-keygen -lf $PRIVATE_KEY_NAME
+echo "The key's randomart image is:"
+ssh-keygen -lvf $PRIVATE_KEY_NAME.pub
+
+# List the files
+ls -l $PRIVATE_KEY_NAME*
